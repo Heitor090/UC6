@@ -1,23 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NovoEstacionamento.Models
+﻿namespace NovoEstacionamento.Models
 {
-    internal class Cliente
-    {
-        public Cliente(String nome) 
-        
+  
+            public class Cliente(String nome)
         {
-            Nome = nome;
-        
-        }
-        public int Id { get; set; }
-        public string Nome { get; set; }
-        public string Cpf { get; set; }
-        public string NTelefone { get; set; }
 
+            public int Id { get; set; }
+            public string Nome { get; set; }
+            public string Cpf { get; set; }
+            public string Telefone { get; set; }
+            public string Apelido { get; set; }
+        }
     }
-}
+    

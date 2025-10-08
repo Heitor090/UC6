@@ -1,5 +1,14 @@
-﻿using NovoEstacionamento.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using NovoEstacionamento.Data;
 
-var c1 = new Cliente("Joao Silva");
+var host = Host.CreateDefaultBuilder(args)
+    .ConfigureServices((context, services) =>
 
-Console.WriteLine(c1.Nome);
+{
+        string connection = "Server=(localdb)\\mssqllocaldb;Database=NovoEstacionamentoDB;Trusted_Connection=True;";
+    services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(connection));
+
+}).Build();
