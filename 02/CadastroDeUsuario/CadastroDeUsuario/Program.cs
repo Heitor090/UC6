@@ -97,6 +97,7 @@ void MenuProdutos()
         Console.WriteLine("==== Gerenciar produtos ====");
         Console.WriteLine("1. Adicionar Produto");
         Console.WriteLine("2. Listar Produtos");
+        Console.WriteLine("3. Ver detalhes Produtos");
         Console.WriteLine("0. Voltar");
 
         int opcao = int.Parse(Console.ReadLine());
@@ -110,6 +111,9 @@ void MenuProdutos()
                 break;
             case 2:
                 produtoController.ListarProduto();
+                break;
+            case 3:
+                produtoController.DetalhesProdutos();
                 break;
             case 0:
                 voltar = true;
