@@ -8,12 +8,12 @@ internal class UsuarioController
     private AppDbContext _context;
 
 
-    public UsuarioController(AppDbContext context) 
+    public UsuarioController(AppDbContext context)
     {
         _context = context;
-    
+
     }
-    public void Adicionar() 
+    public void Adicionar()
     {
         #region Pedir Dados
         Console.Write("Primeiro Nome: ");
@@ -38,24 +38,92 @@ internal class UsuarioController
         Console.WriteLine("Usuário Cadastrado");
         Console.ReadKey();
     }
-    public void Listar() 
+    public void Listar()
     {
         var usuarios = _context.Usuarios.ToList();
 
-        if (usuarios.Any())
+        if (usuarios.Count() == 0)
         {
-            Console.WriteLine("Nenhum usuario cadastrado");
-
+            Console.WriteLine("Nenum usuário cadastrado!");
         }
-        else 
+        else
         {
-            foreach (var usuario in usuarios) 
+            foreach (var usuario in usuarios)
             {
-                Console.WriteLine($"ID: {usuario.Id} | Nome: {usuario.PrimeiroNome} {usuario.Sobrenome}");
-            } 
-        
+                Console.WriteLine($"ID: {usuario.Id} | Nome: {usuario.PrimeiroNome}");
+            }
         }
-        Console.WriteLine("\n Pressione qualquer tecla para voltar.");
+
+        Console.WriteLine("\nPressione qualquer telca para voltar.");
         Console.ReadKey();
     }
+
+
+
+    public void Detalhes()
+    {
+
+        // Dizer onde estou
+        Console.Clear();
+        Console.WriteLine("==== Detalhes do Usuário ====");
+
+        // Pedir ID usuario
+        Console.WriteLine("Digite o ID do usuário:");
+        var idUsuario = int.Parse(Console.ReadLine());
+
+        // Buscar usuario no banco de dados
+        var usuario = _context.Usuarios
+            .FirstOrDefault(user => user.Id == idUsuario);
+
+        // Se nao encontar, avisar usuario
+           
+        if (usuario == null)
+        {
+            Console.WriteLine("\nUsuario não encontrado!");
+
+        }
+        
+        // Se encontar, mostrar ao usuario
+        else
+        {
+            Console.WriteLine("---- Dados Usuários ----");
+            Console.WriteLine($"Id: {usuario.Id}");
+            Console.WriteLine($"Nome {usuario.PrimeiroNome}");
+            Console.WriteLine($"Sobrenome {usuario.Sobrenome}");
+            Console.WriteLine($"Nascimento {usuario.DataNascimento}");
+        }
+
+        Console.WriteLine("\nPressione qualuqer tela para voltar.");
+        Console.ReadKey();
+
+    }
+
+    public void Remover() 
+    
+    {
+        Console.Clear();
+        Console.WriteLine("==== Remover Usuário ====");
+        Console.Write("Digite o ID do usuário: ");
+        var idUsuario = int.Parse(Console.ReadLine());
+        var usuarioParaDeletar = _context.Usuarios
+                .FirstOrDefault(user => user.Id == idUsuario);
+
+        // Se não encontrar, avisar o usuário
+        if (usuarioParaDeletar == null)
+        {
+            Console.WriteLine("\nUsuário não encontrado!");
+            Console.ReadKey();
+            return;
+        }
+        _context.Usuarios.Remove(usuarioParaDeletar);
+        _context.SaveChanges();
+
+
+        Console.WriteLine("\nPressione qualuqer tela para voltar.");
+        Console.ReadKey();
+
+    }
+
+
+
 }
