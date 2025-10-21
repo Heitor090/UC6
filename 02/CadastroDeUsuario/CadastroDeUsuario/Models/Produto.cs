@@ -11,7 +11,7 @@ namespace CadastroDeUsuario.Models
 
         public int Id { get; set; }
         public string? Nome { get; set; }
-        public Decimal? Preco { get; set; }
+        public decimal? Preco { get; set; }
         public DateOnly DataVencimento { get; set; }
 
 

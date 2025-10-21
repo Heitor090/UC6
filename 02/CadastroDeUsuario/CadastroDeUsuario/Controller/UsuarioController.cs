@@ -123,6 +123,42 @@ internal class UsuarioController
         Console.ReadKey();
 
     }
+    public void AtualizarUsuario()
+    {
+        Console.Clear();
+        Console.WriteLine("==== Atualizar Usuario ====");
+        Console.Write("Digite o ID do USuario: ");
+        var idUsuarioInformado = int.Parse(Console.ReadLine());
+
+        var usuarioParaAtualizar = _context.Usuarios
+            .FirstOrDefault(user => user.Id == idUsuarioInformado);
+
+        if (usuarioParaAtualizar == null)
+        {
+            Console.WriteLine("\nUsuário não encontado!");
+            Console.ReadKey();
+            return;
+        }
+        Console.WriteLine($"\nEditando novo usuário: {usuarioParaAtualizar.PrimeiroNome}");
+        Console.Write("Novo Primeiro Nome:");
+        string novoPrimeiroNome = Console.ReadLine();
+        Console.Write("Novo Sobrenome: ");
+        string novoSobrenomenome = Console.ReadLine();
+        Console.Write("Nova data nascimento (AAAA-MM-DD): ");
+        DateOnly novaDataNascimento = DateOnly.Parse(Console.ReadLine());
+
+
+        usuarioParaAtualizar.PrimeiroNome = novoPrimeiroNome;
+        usuarioParaAtualizar.Sobrenome = novoSobrenomenome;
+        usuarioParaAtualizar.DataNascimento = novaDataNascimento;
+
+        _context.Usuarios.Update(usuarioParaAtualizar);
+        _context.SaveChanges();
+
+        Console.WriteLine("\n Usuário atualizado com sucesso!");
+        Console.WriteLine("Aperte qualquer tecla para continuar: ");
+        Console.ReadKey();
+    }
 
 
 
