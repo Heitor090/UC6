@@ -1,0 +1,124 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\heitor.bleao\\OneDrive - SENAC - SP\\UCS\\GitHub\\UC6\\03\\VeiculoConsoleApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B845D0CC-CB14-492B-ABE7-9C923F07073A}|VeiculoConsoleApp\\VeiculoConsoleApp.csproj|c:\\users\\heitor.bleao\\onedrive - senac - sp\\ucs\\github\\uc6\\03\\veiculoconsoleapp\\veiculoconsoleapp\\controllers\\veiculocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B845D0CC-CB14-492B-ABE7-9C923F07073A}|VeiculoConsoleApp\\VeiculoConsoleApp.csproj|solutionrelative:veiculoconsoleapp\\controllers\\veiculocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\heitor.bleao\\OneDrive - SENAC - SP\\UCS\\GitHub\\UC6\\03\\VeiculoConsoleApp\\VeiculoConsoleApp\\Migrations\\20251021233117_add-Migration Inserindo funcoes a Veiculo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:VeiculoConsoleApp\\Migrations\\20251021233117_add-Migration Inserindo funcoes a Veiculo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B845D0CC-CB14-492B-ABE7-9C923F07073A}|VeiculoConsoleApp\\VeiculoConsoleApp.csproj|c:\\users\\heitor.bleao\\onedrive - senac - sp\\ucs\\github\\uc6\\03\\veiculoconsoleapp\\veiculoconsoleapp\\presentation\\telas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B845D0CC-CB14-492B-ABE7-9C923F07073A}|VeiculoConsoleApp\\VeiculoConsoleApp.csproj|solutionrelative:veiculoconsoleapp\\presentation\\telas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B845D0CC-CB14-492B-ABE7-9C923F07073A}|VeiculoConsoleApp\\VeiculoConsoleApp.csproj|c:\\users\\heitor.bleao\\onedrive - senac - sp\\ucs\\github\\uc6\\03\\veiculoconsoleapp\\veiculoconsoleapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B845D0CC-CB14-492B-ABE7-9C923F07073A}|VeiculoConsoleApp\\VeiculoConsoleApp.csproj|solutionrelative:veiculoconsoleapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B845D0CC-CB14-492B-ABE7-9C923F07073A}|VeiculoConsoleApp\\VeiculoConsoleApp.csproj|c:\\users\\heitor.bleao\\onedrive - senac - sp\\ucs\\github\\uc6\\03\\veiculoconsoleapp\\veiculoconsoleapp\\models\\veiculos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B845D0CC-CB14-492B-ABE7-9C923F07073A}|VeiculoConsoleApp\\VeiculoConsoleApp.csproj|solutionrelative:veiculoconsoleapp\\models\\veiculos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B845D0CC-CB14-492B-ABE7-9C923F07073A}|VeiculoConsoleApp\\VeiculoConsoleApp.csproj|c:\\users\\heitor.bleao\\onedrive - senac - sp\\ucs\\github\\uc6\\03\\veiculoconsoleapp\\veiculoconsoleapp\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B845D0CC-CB14-492B-ABE7-9C923F07073A}|VeiculoConsoleApp\\VeiculoConsoleApp.csproj|solutionrelative:veiculoconsoleapp\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "VeiculoController.cs",
+              "DocumentMoniker": "C:\\Users\\heitor.bleao\\OneDrive - SENAC - SP\\UCS\\GitHub\\UC6\\03\\VeiculoConsoleApp\\VeiculoConsoleApp\\Controllers\\VeiculoController.cs",
+              "RelativeDocumentMoniker": "VeiculoConsoleApp\\Controllers\\VeiculoController.cs",
+              "ToolTip": "C:\\Users\\heitor.bleao\\OneDrive - SENAC - SP\\UCS\\GitHub\\UC6\\03\\VeiculoConsoleApp\\VeiculoConsoleApp\\Controllers\\VeiculoController.cs",
+              "RelativeToolTip": "VeiculoConsoleApp\\Controllers\\VeiculoController.cs",
+              "ViewState": "AgIAAI8AAAAAAAAAAAAtwIgAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T00:54:01.236Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\heitor.bleao\\OneDrive - SENAC - SP\\UCS\\GitHub\\UC6\\03\\VeiculoConsoleApp\\VeiculoConsoleApp\\Program.cs",
+              "RelativeDocumentMoniker": "VeiculoConsoleApp\\Program.cs",
+              "ToolTip": "C:\\Users\\heitor.bleao\\OneDrive - SENAC - SP\\UCS\\GitHub\\UC6\\03\\VeiculoConsoleApp\\VeiculoConsoleApp\\Program.cs",
+              "RelativeToolTip": "VeiculoConsoleApp\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T00:33:26.459Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "20251021233117_add-Migration Inserindo funcoes a Veiculo.cs",
+              "DocumentMoniker": "C:\\Users\\heitor.bleao\\OneDrive - SENAC - SP\\UCS\\GitHub\\UC6\\03\\VeiculoConsoleApp\\VeiculoConsoleApp\\Migrations\\20251021233117_add-Migration Inserindo funcoes a Veiculo.cs",
+              "RelativeDocumentMoniker": "VeiculoConsoleApp\\Migrations\\20251021233117_add-Migration Inserindo funcoes a Veiculo.cs",
+              "ToolTip": "C:\\Users\\heitor.bleao\\OneDrive - SENAC - SP\\UCS\\GitHub\\UC6\\03\\VeiculoConsoleApp\\VeiculoConsoleApp\\Migrations\\20251021233117_add-Migration Inserindo funcoes a Veiculo.cs",
+              "RelativeToolTip": "VeiculoConsoleApp\\Migrations\\20251021233117_add-Migration Inserindo funcoes a Veiculo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T23:31:17.379Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Telas.cs",
+              "DocumentMoniker": "C:\\Users\\heitor.bleao\\OneDrive - SENAC - SP\\UCS\\GitHub\\UC6\\03\\VeiculoConsoleApp\\VeiculoConsoleApp\\Presentation\\Telas.cs",
+              "RelativeDocumentMoniker": "VeiculoConsoleApp\\Presentation\\Telas.cs",
+              "ToolTip": "C:\\Users\\heitor.bleao\\OneDrive - SENAC - SP\\UCS\\GitHub\\UC6\\03\\VeiculoConsoleApp\\VeiculoConsoleApp\\Presentation\\Telas.cs",
+              "RelativeToolTip": "VeiculoConsoleApp\\Presentation\\Telas.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAowFMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T01:08:39.531Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Veiculos.cs",
+              "DocumentMoniker": "C:\\Users\\heitor.bleao\\OneDrive - SENAC - SP\\UCS\\GitHub\\UC6\\03\\VeiculoConsoleApp\\VeiculoConsoleApp\\Models\\Veiculos.cs",
+              "RelativeDocumentMoniker": "VeiculoConsoleApp\\Models\\Veiculos.cs",
+              "ToolTip": "C:\\Users\\heitor.bleao\\OneDrive - SENAC - SP\\UCS\\GitHub\\UC6\\03\\VeiculoConsoleApp\\VeiculoConsoleApp\\Models\\Veiculos.cs",
+              "RelativeToolTip": "VeiculoConsoleApp\\Models\\Veiculos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T00:37:34.986Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\heitor.bleao\\OneDrive - SENAC - SP\\UCS\\GitHub\\UC6\\03\\VeiculoConsoleApp\\VeiculoConsoleApp\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "VeiculoConsoleApp\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\heitor.bleao\\OneDrive - SENAC - SP\\UCS\\GitHub\\UC6\\03\\VeiculoConsoleApp\\VeiculoConsoleApp\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "VeiculoConsoleApp\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T00:44:01.749Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
