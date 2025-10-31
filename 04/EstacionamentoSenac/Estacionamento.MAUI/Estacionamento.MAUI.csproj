@@ -1,4 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿
+<Project Sdk="Microsoft.NET.Sdk.Razor">
 
     <PropertyGroup>
         <TargetFrameworks>net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
@@ -58,6 +59,27 @@
 
         <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
         <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AndroidResource Remove="Components\Pages\NovaPasta1\**" />
+      <AndroidResource Remove="Components\Pages\NovaPasta\**" />
+      <AndroidResource Remove="Components\Pages\Veículos\**" />
+      <Compile Remove="Components\Pages\NovaPasta1\**" />
+      <Compile Remove="Components\Pages\NovaPasta\**" />
+      <Compile Remove="Components\Pages\Veículos\**" />
+      <Content Remove="Components\Pages\NovaPasta1\**" />
+      <Content Remove="Components\Pages\NovaPasta\**" />
+      <Content Remove="Components\Pages\Veículos\**" />
+      <EmbeddedResource Remove="Components\Pages\NovaPasta1\**" />
+      <EmbeddedResource Remove="Components\Pages\NovaPasta\**" />
+      <EmbeddedResource Remove="Components\Pages\Veículos\**" />
+      <MauiXaml Remove="Components\Pages\NovaPasta1\**" />
+      <MauiXaml Remove="Components\Pages\NovaPasta\**" />
+      <MauiXaml Remove="Components\Pages\Veículos\**" />
+      <None Remove="Components\Pages\NovaPasta1\**" />
+      <None Remove="Components\Pages\NovaPasta\**" />
+      <None Remove="Components\Pages\Veículos\**" />
     </ItemGroup>
 
     <ItemGroup>

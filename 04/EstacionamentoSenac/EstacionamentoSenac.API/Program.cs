@@ -10,12 +10,12 @@ builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(connectionSt
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
-builder.Services.AddCors(options =>
+builder.Services.AddCors(optons =>
 {
-    options.AddPolicy("PermitirTudo", policy => 
-    policy.AllowAnyOrigin()
-    .AllowAnyMethod()
-    .AllowAnyHeader());
+    optons.AddPolicy("PermitirTudo", policy =>
+        policy.AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader());
 });
 
 var app = builder.Build();

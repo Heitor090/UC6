@@ -1,5 +1,6 @@
 ﻿using EstacionamentoSenac.API.Data;
 using EstacionamentoSenac.API.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EstacionamentoSenac.API.Controllers
@@ -15,60 +16,52 @@ namespace EstacionamentoSenac.API.Controllers
             _context = context;
         }
 
-        public string Teste() => "Teste MOtoristaController";
-
         [HttpGet]
-
-        public ActionResult<Motorista> GetMotoristas()
+        public ActionResult<List<Motorista>> GetMotoristas()
         {
             return Ok(_context.Motoristas.ToList());
         }
 
-        [HttpGet("{ id }")]
-
-        public ActionResult<Motorista> GetMotoristaByID(int id)
+        [HttpGet("{id}")]
+        public ActionResult<Veiculo> GetMotoristaById(int id)
         {
+            //_context.Veiculos.FirstOrDefault(v => v.Id == id);
             var motorista = _context.Motoristas.Find(id);
-            if (id == null)
+
+            if (motorista == null)
                 return NotFound();
 
             return Ok(motorista);
         }
 
         [HttpPost]
-
-        public ActionResult<Motorista> PostMotorista(Motorista motorista)
+        public ActionResult<Veiculo> PostMotorista(Motorista motorista)
         {
             _context.Motoristas.Add(motorista);
             _context.SaveChanges();
 
             return Created();
-
         }
 
         [HttpPut("{id}")]
-
         public ActionResult<Motorista> PutMotorista(int id, Motorista motoristaNovo)
         {
             if (id != motoristaNovo.Id)
-                return BadRequest("Motorista informado na URL é diferente do arquivo Json");
+                return BadRequest("Veiculo informado na URL diferente do objeto JSON");
 
             var motoristaExistente = _context.Motoristas.Find(id);
-            if (motoristaExistente == null)
-                return NotFound();
+            if (motoristaExistente == null) return NotFound();
 
+            // Atualizar de fato o veículo
             motoristaExistente.Nome = motoristaNovo.Nome;
+            motoristaExistente.VeiculoId = motoristaNovo.VeiculoId;
 
             _context.SaveChanges();
             return NoContent();
         }
 
-
-
-        [HttpDelete]
-
-
-     public ActionResult<Motorista> DeleteMotorista(int id)
+        [HttpDelete("{id}")]
+        public ActionResult<Motorista> DeleteMotorista (int id)
         {
             var motorista = _context.Motoristas.Find(id);
             if (motorista == null) return NotFound();
@@ -76,7 +69,6 @@ namespace EstacionamentoSenac.API.Controllers
             _context.Motoristas.Remove(motorista);
             _context.SaveChanges();
             return NoContent();
-
         }
     }
 }
