@@ -2,10 +2,11 @@
 @using Estacionamento.MAUI.Models
 @inject HttpClient Http;
 
-<h3>Detalhes Do Veículo</h3>
-@if(veiculo == null)
+<h3>Detalhes do Veículo</h3>
+
+@if (veiculo == null)
 {
-    <p><ea>Carregando...</ea></p>
+    <p><em>Carregando...</em></p>
 }
 else
 {
@@ -27,25 +28,21 @@ else
                 @veiculo.Modelo
             </dd>
         </dl>
-    </div>
+    </div>    
 
     <div>
         <a href="/veiculos" class="btn btn-light">Voltar</a>
     </div>
 }
-<div>
-
-    <a href="/veiculos" class="btn btn-light">Voltar</a>
-
-</div>
 
 @code {
     [Parameter]
     public int Id { get; set; }
     private Veiculo? veiculo;
+
     protected override async Task OnInitializedAsync()
     {
+        // Busca um veículo na API
         veiculo = await Http.GetFromJsonAsync<Veiculo>($"https://localhost:4000/api/Veiculos/{Id}");
     }
-
 }
