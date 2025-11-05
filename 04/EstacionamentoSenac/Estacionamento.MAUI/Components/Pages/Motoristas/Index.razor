@@ -20,8 +20,8 @@ else
         <thead>
             <tr>
                 <th scope="col">Id</th>
-                <th scope="col">Marca</th>
-                <th scope="col">Modelo</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Veículo</th>
                 <th scope="col">Ações</th>
             </tr>
         </thead>
@@ -33,7 +33,9 @@ else
 
                     <td>@motorista.Id</td>
                     <td>@motorista.Nome</td>
-                    <td>@motorista.VeiculoID</td>
+                    <td>
+                        @(motorista.Veiculo != null ? $"{motorista.Veiculo.Marca}" : $"Não possui nenhum veículo!" )
+                    </td>
                     <td>
                         <a href="/motoristas/edit/@motorista.Id" class="btn btn-warning">Editar</a>
                         <a href="/motoristas/details/@motorista.Id" class="btn btn-info">Detalhes</a>

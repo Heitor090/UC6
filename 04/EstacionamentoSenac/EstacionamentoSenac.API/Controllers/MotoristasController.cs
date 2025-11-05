@@ -2,6 +2,7 @@
 using EstacionamentoSenac.API.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace EstacionamentoSenac.API.Controllers
 {
@@ -19,14 +20,15 @@ namespace EstacionamentoSenac.API.Controllers
         [HttpGet]
         public ActionResult<List<Motorista>> GetMotoristas()
         {
-            return Ok(_context.Motoristas.ToList());
+            return Ok(_context.Motoristas.Include(m => m.Veiculo).ToList());
         }
 
+
         [HttpGet("{id}")]
-        public ActionResult<Veiculo> GetMotoristaById(int id)
+        public ActionResult<Motorista> GetMotoristaById(int id)
         {
             //_context.Veiculos.FirstOrDefault(v => v.Id == id);
-            var motorista = _context.Motoristas.Find(id);
+            var motorista = _context.Motoristas.Include (m=> m.Veiculo).FirstOrDefault(v=>v.Id == id);
 
             if (motorista == null)
                 return NotFound();
