@@ -1,0 +1,60 @@
+﻿@page "/motoristas"
+@inject HttpClient http
+@using EstacionamentoMAUI.Models;
+
+<h3>Lista de Motoristas</h3>
+<a href="/motoristas/create" class="btn btn-warning">Cadastrar</a>
+
+@if (motoristas == null)
+{
+    <p>Carregando...</p>
+}
+else if (!motoristas.Any())
+{
+    <p>Nenhum Motorista identificado!</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nome</th>
+                <th scope="col">CPF</th>
+                <th scope="col">Telefone</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var motorista in motoristas)
+            {
+                <tr>
+
+                    <td>@motorista.Id</td>
+                    <td>@motorista.Nome</td>
+                    <td>@motorista.Cpf</td>
+                    <td>@motorista.Telefone</td>
+                    
+                    <td>
+                        <a href="/motoristas/edit/@motorista.Id" class="btn btn-warning">Editar</a>
+                        <a href="/motoristas/details/@motorista.Id" class="btn btn-info">Detalhes</a>
+                        <a href="/motoristas/delete/@motorista.Id" class="btn btn-danger">Excluir</a>
+                    </td>
+
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+
+}
+
+@code {
+    List<Motorista> motoristas;
+    protected override async Task OnInitializedAsync()
+    {
+        motoristas = await http.GetFromJsonAsync<List<Motorista>>("https://localhost:4000/api/Motoristas");
+    }
+
+}
