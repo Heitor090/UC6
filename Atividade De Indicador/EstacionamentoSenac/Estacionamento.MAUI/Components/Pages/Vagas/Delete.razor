@@ -1,0 +1,57 @@
+﻿@page "/vagas/delete/{int:id}"
+@using Estacionamento.MAUI.Models
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+<h3>Excluxão de Vagas</h3>
+
+@if (vaga == null)
+{
+    <p><em>Carregando...</em></p>
+}
+else
+{
+
+    <div>
+        <h4>Registro Estacionamento</h4>
+        <hr />
+
+        <dl class="row">
+            <dt class="col-sm-2">
+                Local da Vaga
+            </dt>
+            <dd class="col-sm-10">
+                @vaga.Localizacao
+            </dd>
+            <dt class="col-sm-2">
+               Tipo de Vaga:
+            </dt>
+            <dd class="col-sm-10">
+                @vaga.TipoVaga
+            </dd>
+         </dl>
+    </div>
+    <div>
+
+        <form @onsubmit="DeleteVaga">
+            <input type="submit" value="Excluir" class="btn btn-danger" />
+            <a href="/vagas" class="btn btn-light">Voltar</a>
+        </form>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    private Vaga? vaga;
+    protected override async Task OnInitializedAsync()
+    {
+        vaga = await Http.GetFromJsonAsync<Vaga>($"https://localhost:4000/api/Vagas/{Id}");
+    }
+    async Task DeleteVaga()
+    {
+        await Http.DeleteAsync($"https://localhost:4000/api/Vagas/{Id}");
+        NavigationManager.NavigateTo("/vagas");
+    }
+
+}

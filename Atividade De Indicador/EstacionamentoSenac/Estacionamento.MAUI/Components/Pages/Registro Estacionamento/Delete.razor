@@ -1,0 +1,72 @@
+﻿@page "/registros/delete/{int:id}"
+@using Estacionamento.MAUI.Models
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+<h3>Excluir Registro de Estacionamento</h3>
+
+@if (registroEstacionamento == null)
+{
+    <p><em>Carregando...</em></p>
+}
+else
+{
+
+    <div>
+        <h4>Registro Estacionamento</h4>
+        <hr />
+
+        <dl class="row">
+            <dt class="col-sm-2">
+                Id do Veículo
+            </dt>
+            <dd class="col-sm-10">
+                @registroEstacionamento.VeiculoId
+            </dd>
+            <dt class="col-sm-2">
+                Id da Vaga:
+            </dt>
+            <dd class="col-sm-10">
+                @registroEstacionamento.VagaId
+            </dd>
+            <dt class="col-sm-2">
+                 Data Hora Entrada:
+            </dt>
+            <dd class="col-sm-10">
+                @registroEstacionamento.DataHoraEntrada
+            </dd>
+            @if(registroEstacionamento.DataHoraSaida != null){
+                @foreach (var RegistorEstacionamento in registroEstacionamento)
+                {
+                     <dt class="col-sm-2">
+                    @registroEstacionamento.DataHoraSaida
+                    </dt>
+                }
+            }
+               
+        </dl>
+    </div>
+    <div>
+
+        <form @onsubmit="DeleteRegistro">
+            <input type="submit" value="Excluir" class="btn btn-danger" />
+            <a href="/registro" class="btn btn-light">Voltar</a>
+        </form>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    private RegistroEstacionamento? registroEstacionamento;
+
+    protected override async Task OnInitializedAsync()
+    {
+        registroEstacionamento = await Http.GetFromJsonAsync<RegistroEstacionamento>($"https://localhost:4000/api/RegistrosEstacionamento/{Id}");
+    }
+    async Task DeleteRegistro()
+    {
+        await Http.DeleteAsync($"https://localhost:4000/api/RegistrosEstacionamento/{Id}");
+        NavigationManager.NavigateTo("/registros");
+    }
+}

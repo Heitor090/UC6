@@ -1,0 +1,49 @@
+﻿@page "/vagas/details/{int:id}"
+@using Estacionamento.MAUI.Models
+@inject HttpClient Http
+
+<h3>Detalhes da Vaga</h3>
+
+@if (vagas == null)
+{
+    <p><em>Carregando...</em></p>
+}
+else
+{
+    <div>
+        <h4>Vaga:</h4>
+        <hr />
+
+        <dl class="row">
+            <dt class="col-sm-2">
+                Localização da Vaga
+            </dt>
+            <dd class="col-sm-10">
+                @vagas.Localizacao
+            </dd>
+            <dt class="col-sm-2">
+                Tipo de Vaga
+            </dt>
+            <dd class="col-sm-10">
+                @vagas.TipoVaga
+            </dd>            
+        </dl>
+    </div>
+
+    <div>
+        <a href="/vagas" class="btn btn-light">Voltar</a>
+    </div>
+}
+
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    private Vaga? vagas;
+
+    protected override async Task OnInitializedAsync()
+    {
+        vagas = await Http.GetFromJsonAsync<Vaga>($"https://localhost:4000/api/Vagas/{Id}");
+    }
+
+}

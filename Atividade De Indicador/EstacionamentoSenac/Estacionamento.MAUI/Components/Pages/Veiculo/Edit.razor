@@ -1,0 +1,61 @@
+﻿@page "/veiclos/edit/{int:id}"
+@using Estacionamento.MAUI.Models
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+
+<h3>Editar Veiculo</h3>
+
+@if (veiculo == null)
+{
+    <p><em>Carregando...</em></p>
+}
+else
+{
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form @onsubmit="UpdateVeiculo">
+                <div class="form-group">
+                    <label for="Placa" class="control-label">Placa</label>
+                    <input for="Placa" class="form-control" @bind="veiculo.Placa" />
+                </div>
+                <div class="form-group">
+                    <label for="Modelo" class="control-label">Modelo</label>
+                    <input for="Modelo" class="form-control" @bind="veiculo.Modelo" />
+                </div>
+                <div class="form-group">
+                    <label for="Cor" class="control-label">Cor</label>
+                    <input for="Cor" class="form-control" @bind="veiculo.Cor" />
+                </div>
+                <div class="form-group">
+                    <label for="MotoristaId" class="control-label">MotoristaId</label>
+                    <input for="MotoristaId" class="form-control" @bind="veiculo.MotoristaId" />
+                </div>
+                <div class="form-group mt-3">
+                    <input type="submit" value="Salvar" class="btn btn-primary" />
+                    <a href="/veiculos" class="btn btn-light">Voltar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private Veiculo? veiculo;
+
+    protected override async Task OnInitializedAsync()
+    {
+        veiculo = await Http.GetFromJsonAsync<Veiculo>($"https://localhost:4000/api/veiculos/{Id}");
+    }
+
+    async Task UpdateVeiculo()
+    {
+        await Http.PutAsJsonAsync($"https://localhost:4000/api/Veiculos/{Id}", veiculo);
+        NavigationManager.NavigateTo("/veiculos");
+    }
+
+}

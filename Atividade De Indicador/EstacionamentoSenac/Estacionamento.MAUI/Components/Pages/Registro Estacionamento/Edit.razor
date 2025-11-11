@@ -1,0 +1,79 @@
+﻿@page "/registros/edit/{int:id}"
+@using Estacionamento.MAUI.Models
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+
+<h3>Editar Registro de Estacionamento</h3>
+
+@if (registroEstacionamento == null)
+{
+    <p><em>Carregando...</em></p>
+}
+else
+{
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form @onsubmit="UpdateRegistro">
+                <div class="form-group">
+                    <label for="DataHoraEntrada" class="control-label">Data e Hora de Entrada</label>
+                    <input for="DataHoraEntrada" class="form-control" @bind="registroEstacionamento.DataHoraEntrada" />
+                </div>
+                <div class="form-group">
+                    <label for="DataHoraSaida" class="control-label">Data e Hora de Saida</label>
+                    <input for="DataHoraSaida" class="form-control" @bind="registroEstacionamento.DataHoraSaida" />
+                </div>
+                <div class="form-group">
+                    <label for="ValorFinal" class="control-label">Valor Final</label>
+                    <input for="ValorFinal" class="form-control" @bind="registroEstacionamento.ValorFinal" />
+                </div>
+                <select for="vaga" class="form-control" @bind="registroEstacionamento.VagaId">
+                    <option value="">- Selecione uma Vaga -</option>
+                    @if (vagas != null)
+                    {
+                        @foreach (var vaga in vagas)
+                        {
+                            <option value="@vaga.Id">@vaga.Localizacao - @vaga.TipoVaga</option>
+                        }
+                    }
+                </select>
+                <select for="veiculo" class="form-control" @bind="registroEstacionamento.VeiculoId">
+                    <option value="">- Selecione um Veículo -</option>
+                    @if (veiculos != null)
+                    {
+                        @foreach (var veiculo in veiculos)
+                        {
+                            <option value="@veiculo.Id">@veiculo.Modelo - @veiculo.Placa - @veiculo.Cor</option>
+                        }
+                    }
+                </select>
+                <div class="form-group mt-3">
+                    <input type="submit" value="Salvar" class="btn btn-primary" />
+                    <a href="/veiculos" class="btn btn-light">Voltar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private RegistroEstacionamento? registroEstacionamento;
+    List<Vaga>? vagas;
+    List<Veiculo>? veiculos;
+
+    protected override async Task OnInitializedAsync()
+    {
+        registroEstacionamento = await Http.GetFromJsonAsync<RegistroEstacionamento>($"https://localhost:4000/api/RegistrosEstacionamento/{Id}");
+    }
+
+    async Task UpdateRegistro()
+    {
+        await Http.PutAsJsonAsync($"https://localhost:4000/api/Veiculos/{Id}", registroEstacionamento);
+        NavigationManager.NavigateTo("/veiculos");
+    }
+
+}

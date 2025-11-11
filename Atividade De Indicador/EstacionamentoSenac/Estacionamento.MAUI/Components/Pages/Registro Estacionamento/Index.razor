@@ -1,0 +1,59 @@
+﻿@page "/registros"
+@using Estacionamento.MAUI.Models
+@inject HttpClient Http
+
+
+<h3>Index</h3>
+
+<a href="/registros/create" class="btn btn-primary">Cadastrar</a>
+
+@if (registros == null)
+{
+    <p>Carregando...</p>
+}
+else if (!registros.Any())
+{
+    <p>Nenhum registro encontrado.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Id Veiculo</th>
+                <th scope="col">Vaga</th>
+                <th scope="col">Data Hora entrada</th>
+                <th scope="col">Data Horaa saída Id</th>
+                <th scope="col">Valor Final</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var registro in registros)
+            {
+                <tr>
+                    <td>@registro.Id</td>
+                    <td>@registro.VeiculoId</td>
+                    <td>@registro.VagaId</td>
+                    <td>@registro.DataHoraEntrada</td>
+                    <td>@registro.DataHoraSaida</td>
+                    <td>@registro.ValorFinal</td>
+                    <td>
+                        <a href="/registros/edit/@registro.Id" class="btn btn-warning">Editar</a>
+                        <a href="/registros/details/@registro.Id" class="btn btn-info">Detalhes</a>
+                        <a href="/registros/delete/@registro.Id" class="btn btn-danger">Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    List<RegistroEstacionamento>? registros;
+    protected override async Task OnInitializedAsync()
+    {
+        registros = await Http.GetFromJsonAsync<RegistroEstacionamento>("https://localhost:4000/api/RegistrosEstacionamento");
+    }
+}
