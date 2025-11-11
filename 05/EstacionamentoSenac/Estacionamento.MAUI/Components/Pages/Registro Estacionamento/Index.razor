@@ -1,0 +1,59 @@
+﻿@page "/registroE"
+@using Estacionamento.MAUI.Models
+@inject HttpClient Http
+
+
+<h3>Index</h3>
+
+<a href="/registroE/create" class="btn btn-primary">Cadastrar</a>
+
+@if(registroEstacionamentos == null)
+{
+    <p>Carregando...</p>
+}
+else if (!registroEstacionamentos.Any())
+{
+    <p>Nenhum veículo encontrado.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Veiculo</th>
+                <th scope="col">Vaga</th>
+                <th scope="col">Data de Entrada</th>
+                <th scope="col">Data de Saída</th>
+                <th scope="col">Valor final</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var registroEstacionamento in registroEstacionamentos)
+            {
+                <tr>
+                    <td>@registroEstacionamento.Id</td>
+                    <td>@registroEstacionamento.VeiculoId</td>
+                    <td>@registroEstacionamento.VagaId</td>
+                    <td>@registroEstacionamento.DataHoraEntrada</td>
+                    <td>@registroEstacionamento.DataHoraSaida</td>
+                    <td>@registroEstacionamento.ValorFinal</td>
+                    <td>
+                        <a href="/registroE/edit/@registroEstacionamento.Id" class="btn btn-warning">Editar</a>
+                        <a href="/registroE/details/@registroEstacionamento.Id" class="btn btn-info">Detalhes</a>
+                        <a href="/registroE/delete/@registroEstacionamento.Id" class="btn btn-danger">Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>    
+}
+
+@code {
+    List<RegistroEstacionamento>? registroEstacionamentos;
+    protected override async Task OnInitializedAsync()
+    {
+        registroEstacionamentos = await Http.GetFromJsonAsync<List<RegistroEstacionamento>>("https://localhost:4000/api/RegistrosEstacionamento");
+    }
+}
