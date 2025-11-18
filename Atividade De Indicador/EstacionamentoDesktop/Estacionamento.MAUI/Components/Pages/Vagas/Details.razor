@@ -1,23 +1,49 @@
-@page "/vagas/details/{Id:int}"
-@inject HttpClient Http
+@page "/vagas/details/{id:int}"
 @using Estacionamento.MAUI.Models
+@inject HttpClient Http
 
 <h3>Detalhes da Vaga</h3>
 
-@if (true)
+@if (vagas == null)
 {
     <p><em>Carregando...</em></p>
 }
 else
 {
-    <p><strong>ID:</strong> Id</p>
-    <p><strong>Localização:</strong> Localizacao</p>
-    <p><strong>Tipo:</strong> TipoVaga</p>
+    <div>
+        <h4>Vaga:</h4>
+        <hr />
 
-    <a href="#" class="btn btn-primary">Editar</a>
-    <a href="#" class="btn btn-secondary">Voltar</a>
+        <dl class="row">
+            <dt class="col-sm-2">
+                Localização da Vaga
+            </dt>
+            <dd class="col-sm-10">
+                @vagas.Localizacao
+            </dd>
+            <dt class="col-sm-2">
+                Tipo de Vaga
+            </dt>
+            <dd class="col-sm-10">
+                @vagas.TipoVaga
+            </dd>
+        </dl>
+    </div>
+
+    <div>
+        <a href="/vagas" class="btn btn-light">Voltar</a>
+    </div>
 }
 
+
 @code {
-    
+    [Parameter]
+    public int Id { get; set; }
+    private Vaga? vagas;
+
+    protected override async Task OnInitializedAsync()
+    {
+        vagas = await Http.GetFromJsonAsync<Vaga>($"https://localhost:4000/api/Vagas/{Id}");
+    }
+
 }

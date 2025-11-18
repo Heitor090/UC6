@@ -1,53 +1,60 @@
 @page "/registros"
-@inject HttpClient Http
-@inject NavigationManager Navigation
 @using Estacionamento.MAUI.Models
+@inject HttpClient Http
 
-<h3 class="text-center mb-3">Registros de Estacionamento</h3>
 
-<a href="/registros/create" class="btn btn-primary mb-3">Novo Registro</a>
+<h3>Index</h3>
 
-@if (true)
+<a href="/registros/create" class="btn btn-primary">Cadastrar</a>
+
+@if (registros == null)
 {
-    <p><em>Carregando...</em></p>
+    <p>Carregando...</p>
 }
-else if (false)
+else if (!registros.Any())
 {
-    <p><em>Nenhum registro encontrado.</em></p>
+    <p>Nenhum registro encontrado.</p>
 }
 else
 {
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Veículo (Placa)</th>
-                <th>Vaga</th>
-                <th>Entrada</th>
-                <th>Saída</th>
-                <th>Valor</th>
-                <th>Ações</th>
+                <th scope="col">Id</th>
+                <th scope="col">Id Veiculo</th>
+                <th scope="col">Vaga</th>
+                <th scope="col">Data Hora entrada</th>
+                <th scope="col">Data Horaa saída Id</th>
+                <th scope="col">Valor Final</th>
+                <th scope="col">Ações</th>
             </tr>
         </thead>
         <tbody>
-            @* @foreach (var registro in registros) *@
+            @foreach (var registro in registros)
             {
                 <tr>
-                    <td>Veiculo?.Placa</td>
-                    <td>Vaga?.Localizacao</td>
-                    <td>DataHoraEntrada</td>
-                    <td>DataHoraSaida</td>
-                    <td>ValorFinal?.ToString("C")</td>
+                    <td>@registro.Id</td>
+                    <td>@registro.VeiculoId</td>
+                    <td>@registro.VagaId</td>
+                    <td>@registro.DataHoraEntrada</td>
+                    <td>@registro.DataHoraSaida</td>
+                    <td>@registro.ValorFinal</td>
                     <td>
-                        <a href="#" class="btn btn-sm btn-warning">Editar</a>
-                        <a href="#" class="btn btn-sm btn-info">Detalhes</a>
-                        <a href="#" class="btn btn-sm btn-danger">Excluir</a>
+                        <a href="/registros/edit/@registro.Id" class="btn btn-warning">Editar</a>
+                        <a href="/registros/details/@registro.Id" class="btn btn-info">Detalhes</a>
+                        <a href="/registros/delete/@registro.Id" class="btn btn-danger">Excluir</a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
 }
+}
 
 @code {
-   
+    List<RegistroEstacionamento>? registros;
+    protected override async Task OnInitializedAsync()
+    {
+        registros = await Http.GetFromJsonAsync<List<RegistroEstacionamento>>("https://localhost:4000/api/RegistrosEstacionamento");
+    }
 }

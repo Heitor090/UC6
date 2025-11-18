@@ -4,23 +4,29 @@
 
 <h3>Detalhes do Registro</h3>
 
-@if (true)
+@if (registroEstacionamento == null)
 {
     <p><em>Carregando...</em></p>
 }
 else
 {
-    <p><strong>ID:</strong> Id</p>
-    <p><strong>Veículo:</strong> Veiculo?.Placa</p>
-    <p><strong>Vaga:</strong> Vaga?.Localizacao</p>
-    <p><strong>Entrada:</strong> DataHoraEntrada</p>
-    <p><strong>Saída:</strong> DataHoraSaida</p>
-    <p><strong>Valor Final:</strong> ValorFinal?.ToString("C")</p>
+    <p><strong>ID:</strong> @registroEstacionamento.Id</p>
+    <p><strong>Veículo:</strong> @registroEstacionamento.VeiculoId</p>
+    <p><strong>Vaga:</strong>  @registroEstacionamento.VagaId</p>
+    <p><strong>Entrada:</strong> @registroEstacionamento.DataHoraEntrada</p>
+    <p><strong>Saída:</strong> @registroEstacionamento.DataHoraSaida</p>
+    <p><strong>Valor Final:</strong> @registroEstacionamento.ValorFinal</p>
 
     <a href="#" class="btn btn-primary">Editar</a>
     <a href="#" class="btn btn-secondary">Voltar</a>
 }
 
 @code {
-    
+    [Parameter]
+    public int Id { get; set; }
+    private RegistroEstacionamento? registroEstacionamento;
+    protected override async Task OnInitializedAsync()
+    {
+        registroEstacionamento = await Http.GetFromJsonAsync<RegistroEstacionamento>($"https://localhost:4000/api/RegistrosEstacionamento/{Id}");
+    }
 }

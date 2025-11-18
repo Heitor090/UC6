@@ -1,11 +1,11 @@
-﻿@page "/registros/delete/{int:id}"
+﻿@page "/registros/delete/{id:int}"
 @using Estacionamento.MAUI.Models
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
 
 <h3>Excluir Registro de Estacionamento</h3>
 
-@if (registroEstacionamento == null)
+@if (registros == null)
 {
     <p><em>Carregando...</em></p>
 }
@@ -21,25 +21,25 @@ else
                 Id do Veículo
             </dt>
             <dd class="col-sm-10">
-                @registroEstacionamento.VeiculoId
+                @registros.VeiculoId
             </dd>
             <dt class="col-sm-2">
                 Id da Vaga:
             </dt>
             <dd class="col-sm-10">
-                @registroEstacionamento.VagaId
+                @registros.VagaId
             </dd>
             <dt class="col-sm-2">
                  Data Hora Entrada:
             </dt>
             <dd class="col-sm-10">
-                @registroEstacionamento.DataHoraEntrada
+                @registros.DataHoraEntrada
             </dd>
-            @if(registroEstacionamento.DataHoraSaida != null){
+            @if(registros.DataHoraSaida != null){
                 @foreach (var RegistorEstacionamento in registroEstacionamento)
                 {
                      <dt class="col-sm-2">
-                    @registroEstacionamento.DataHoraSaida
+                    @registros.DataHoraSaida
                     </dt>
                 }
             }
@@ -58,11 +58,12 @@ else
 @code {
     [Parameter]
     public int Id { get; set; }
-    private RegistroEstacionamento? registroEstacionamento;
+    private RegistroEstacionamento? registros;
+    public string registroEstacionamento { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        registroEstacionamento = await Http.GetFromJsonAsync<RegistroEstacionamento>($"https://localhost:4000/api/RegistrosEstacionamento/{Id}");
+        registros = await Http.GetFromJsonAsync<RegistroEstacionamento>($"https://localhost:4000/api/RegistrosEstacionamento/{Id}");
     }
     async Task DeleteRegistro()
     {

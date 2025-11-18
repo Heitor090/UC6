@@ -54,6 +54,6 @@ else
     List<RegistroEstacionamento>? registros;
     protected override async Task OnInitializedAsync()
     {
-        registros = await Http.GetFromJsonAsync<RegistroEstacionamento>("https://localhost:4000/api/RegistrosEstacionamento");
+        registros = await Http.GetFromJsonAsync<List<RegistroEstacionamento>>("https://localhost:4000/api/RegistrosEstacionamento");
     }
 }
