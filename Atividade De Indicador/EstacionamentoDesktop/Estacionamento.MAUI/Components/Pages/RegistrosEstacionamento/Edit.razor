@@ -72,8 +72,8 @@ else
 
     async Task UpdateRegistro()
     {
-        await Http.PutAsJsonAsync($"https://localhost:4000/api/Veiculos/{Id}", registroEstacionamento);
-        NavigationManager.NavigateTo("/veiculos");
+        await Http.PutAsJsonAsync($"https://localhost:4000/api/registrosEstacionamento/{Id}", registroEstacionamento);
+        NavigationManager.NavigateTo("/registros");
     }
 
 }
