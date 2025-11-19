@@ -21,7 +21,7 @@ else
         <thead>
             <tr>
                 <th scope="col">Id</th>
-                <th scope="col">Id Veiculo</th>
+                <th scope="col">Placa do Veículo</th>
                 <th scope="col">Vaga</th>
                 <th scope="col">Data Hora entrada</th>
                 <th scope="col">Data Horaa saída Id</th>
@@ -29,13 +29,16 @@ else
                 <th scope="col">Ações</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody> 
             @foreach (var registro in registros)
             {
                 <tr>
                     <td>@registro.Id</td>
-                    <td>@registro.VeiculoId</td>
-                    <td>@registro.VagaId</td>
+                   
+                    
+                   
+                    <td>@registro.Veiculo.Placa</td>
+                    <td>@registro.Vaga.Localizacao</td>
                     <td>@registro.DataHoraEntrada</td>
                     <td>@registro.DataHoraSaida</td>
                     <td>@registro.ValorFinal</td>
@@ -55,6 +58,12 @@ else
     List<RegistroEstacionamento>? registros;
     protected override async Task OnInitializedAsync()
     {
-        registros = await Http.GetFromJsonAsync<List<RegistroEstacionamento>>("https://localhost:4000/api/RegistrosEstacionamento");
+        registros = await Http.GetFromJsonAsync<List<RegistroEstacionamento>>("/api/RegistrosEstacionamento");
+        await ListVeiculos();
+    }
+    List<Veiculo>? veiculos;
+    async Task ListVeiculos(){
+            veiculos = await Http.GetFromJsonAsync<List<Veiculo>>("/api/Veiculos");
+
     }
 }
